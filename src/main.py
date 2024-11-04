@@ -5,15 +5,12 @@ from src.convert_pdf import main as convert_pdf
 from src.convert_xls import main as convert_xls
 
 def main():
-    # Carrega a planilha de gastos e as tabelas do YAML
-    planilha_gastos = load_workbook("../resources/Planilha de Gastos 2024.xlsx")
-    with open('../resources/tabelas.yml', 'r', encoding='utf-8') as file:
-        tabelas = yaml.safe_load(file)
+    planilha_gastos, tabelas, faturas = carregar_arquivos()
 
     # Dicionário para armazenar totais por mês
     totais_por_mes = {}
 
-    for file_xslx in os.listdir("../resources/faturas"):
+    for file_xslx in faturas:
         mes = file_xslx.split("-")[1].replace('.xlsx', '')
         fatura = load_workbook(f"../resources/faturas/{file_xslx}")
         sheet = fatura.active
@@ -34,27 +31,30 @@ def main():
     # Preenche as abas correspondentes após processar todas as faturas
     for mes, totais in totais_por_mes.items():
         aba_atual = planilha_gastos[mes]  # Referência à aba do mês atual
-        preencher_entradas_e_despesas(aba_atual, tabelas, totais)
+        preencher_dados(aba_atual, tabelas, totais)
 
     # Salva a planilha final
     planilha_gastos.save("../resources/Planilha de Gastos 2024.xlsx")
+
+def carregar_arquivos():
+    faturas = os.listdir("../resources/faturas")
+
+    if not faturas:
+        convert_xls()
+        convert_pdf()
+
+    # Carrega a planilha de gastos e as tabelas do YAML
+    planilha_gastos = load_workbook("../resources/Planilha de Gastos 2024.xlsx")
+    with open('../resources/tabelas.yml', 'r', encoding='utf-8') as file:
+        tabelas = yaml.safe_load(file)
+
+    return planilha_gastos, tabelas, faturas
 
 def carregar_despesas(sheet, tabelas):
     totais = {}
     for linha in range(2, sheet.max_row + 1):
         descricao = sheet.cell(row=linha, column=5).value.upper().strip()
         valor = sheet.cell(row=linha, column=9).value
-
-        # Ignora linhas sem valor
-        if valor is None or not isinstance(valor, (int, float, str)):
-            continue
-
-        # Converte valor para float se for uma string numérica
-        try:
-            valor = float(valor)
-        except ValueError:
-            print(f"Valor não numérico ignorado na linha {linha}: {valor}")
-            continue
 
         # Ignora descrições definidas no objeto ignorar em tabelas.yml
         if any(ignorar in descricao for ignorar in tabelas["ignorar"]):
@@ -70,7 +70,7 @@ def carregar_despesas(sheet, tabelas):
 
     return totais
 
-def preencher_entradas_e_despesas(nova_aba, tabelas, totais):
+def preencher_dados(nova_aba, tabelas, totais):
     # Adiciona entradas
     for celula, info in tabelas["entradas"].items():
         nova_aba[celula] = info['nome']
@@ -96,12 +96,6 @@ def preencher_entradas_e_despesas(nova_aba, tabelas, totais):
         nova_aba[f'I{linha_inicial}'] = descricao
         nova_aba[f'J{linha_inicial}'] = valor
         linha_inicial += 1
-
-file_faturas = os.listdir("../resources/faturas")
-
-if not file_faturas:
-    convert_xls()
-    convert_pdf()
 
 if __name__ == "__main__":
     main()
