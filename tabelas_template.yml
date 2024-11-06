@@ -1,0 +1,139 @@
+entradas:
+  B5:
+    nome: "SALÁRIO LÍQUIDO TIAGO"
+    valor: 0
+  B6:
+    nome: "VALE REFEIÇÃO TIAGO"
+    valor: 0
+  B7:
+    nome: "FÉRIAS TIAGO"
+    valor: 0
+  B8:
+    nome: "13º SALÁRIO TIAGO"
+    valor: 0
+  B9:
+    nome: "PLR TIAGO"
+    valor: 0
+  B10:
+    nome: "SALÁRIO LÍQUIDO DANI"
+    valor: 0
+  B11:
+    nome: "VALE ALIMENTAÇÃO DANI"
+    valor: 0
+  B12:
+    nome: "RECARGAPAY"
+    valor: 0
+  B13:
+    nome: "MACAN INVESTIMENTOS"
+    valor: 0
+  B14:
+    nome: "REEMBOLSOS"
+    valor: 0
+
+despesas_fixas:
+  E5:
+    nome: "ALUGUEL"
+    valor: 0
+  E7:
+    nome: "ÁGUA"
+    valor: 0
+  E8:
+    nome: "LUZ"
+    valor: 0
+  E9:
+    nome: "IPTU"
+    valor: 0
+  E29:
+    nome: "INTERNET CRIS"
+    valor: 0
+
+despesas_variaveis:
+  CONDOMÍNIO:
+    termos: ["PJBANK *HORTO"]
+    col_e: "E6"
+    col_f: "F6"
+  INTERNET/CELULAR:
+    termos: ["CONTA VIVO"]
+    col_e: "E10"
+    col_f: "F10"
+  MERCADO:
+    termos: ["TAUSTE", "ALVORADA", "AMME", "CLICK", "VEM QUE TEM", "VILSON", "TON A CASA", "PRODUT", "HEVERTON"]
+    col_e: "E11"
+    col_f: "F11"
+  FARMÁCIA:
+    termos: ["DROGASIL", "DROGA", "PAGUE MENOS", "FARMA"]
+    col_e: "E12"
+    col_f: "F12"
+  GATOS:
+    termos: ["PETLOVE", "PET LOVE*", "COBASI", "PET CAMP", "CATVET", "RACOES"]
+    col_e: "E13"
+    col_f: "F13"
+  SEGURO_DE_VIDA:
+    termos: ["*NU PAGA", "NUBANK VIDA"]
+    col_e: "E14"
+    col_f: "F14"
+  ACADEMIA:
+    termos: ["GYMPASS", "WELLHUB", "SUA ACADEMIA"]
+    col_e: "E15"
+    col_f: "F15"
+  COMBUSTIVEL/PEDAGIO/SEGURO:
+    termos: ["SHELL", "CAR", "VIAOESTE", "YELUM", "LIBERTY", "TOKIO", "POSTO", "PARK", "*GALAX PAY", "MAHDRI", "ANDRELUIS", "FUNILARIA", "ESTACIONAMENTO"]
+    col_e: "E16"
+    col_f: "F16"
+  STREAMINGS:
+    termos: ["MELIMAIS", "AMAZONPRIME", "*TIAGORIBE", "APPLE.COM"]
+    col_e: "E17"
+    col_f: "F17"
+  UBER/METRO/BUSAO:
+    termos: ["UBER", "99", "TOP", "COMETA"]
+    col_e: "E18"
+    col_f: "F18"
+  SHOWS:
+    termos: ["ALLIANZ", "ZIG*", "LIVE SHOWS", "EVENTIM", "INGRESSO", "TICKET"]
+    col_e: "E19"
+    col_f: "F19"
+  IFOOD:
+    termos: ["IFD*", "IFOOD"]
+    col_e: "E20"
+    col_f: "F20"
+  LANCHE/ALMOÇO:
+    termos: ["CAFETERIA", "NOVA FARIA", "RESTAURANTE", "BAR", "RESTAU", "POKE", "EMPORIO"]
+    col_e: "E21"
+    col_f: "F21"
+  AÇAÍ/SORVETE/DOCE:
+    termos: ["BOLOS", "JOAOCARLOSFERRAZ", "DOCES"]
+    col_e: "E22"
+    col_f: "F22"
+  CAFÉ:
+    termos: ["CFI"]
+    col_e: "E23"
+    col_f: "F23"
+  CIGARRO:
+    termos: ["TABACA"]
+    col_e: "E24"
+    col_f: "F24"
+  MANICURE:
+    termos: ["DELLA BELLE", "ESTETICA", "CILIOS", "IRIS TAKAHASHI"]
+    col_e: "E25"
+    col_f: "F25"
+  VESTUARIO:
+    termos: ["MUNDO LOLITA", "COSME", "TEMU", "SANTA LOLLA", "MODAB"]
+    col_e: "E26"
+    col_f: "F26"
+  LIVROS:
+    termos: [ "NOBEL", "LIVRO", "LIVRARIA"]
+    col_e: "E27"
+    col_f: "F27"
+  PADARIA/FEIRA:
+    termos: ["WILLIAM SILVA XAVIER", "SANTOSPAES"]
+    col_e: "E28"
+    col_f: "F28"
+
+ignorar:
+  - "PAGAMENTO FATURA"
+  - "ESTORNO"
+  - "ANUIDADE"
+  - "REEMBOLSO"
+  - "FATURA ANTERIOR"
+  - "INCLUSAO DE PAGAMENTO"
+

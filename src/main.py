@@ -56,7 +56,7 @@ def carregar_despesas(sheet, tabelas):
         descricao = sheet.cell(row=linha, column=5).value.upper().strip()
         valor = sheet.cell(row=linha, column=9).value
 
-        # Ignora descrições definidas no objeto ignorar em tabelas.yml
+        # Ignora descrições definidas no objeto ignorar em tabelas_template.yml
         if any(ignorar in descricao for ignorar in tabelas["ignorar"]):
             continue
 
