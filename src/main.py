@@ -34,7 +34,7 @@ def main():
         preencher_dados(aba_atual, tabelas, totais)
 
     # Salva a planilha final
-    planilha_gastos.save("../resources/Planilha de Gastos 2024.xlsx")
+    planilha_gastos.save("../resources/Planilha de Gastos 2025.xlsx")
 
 def carregar_arquivos():
     faturas = os.listdir("../resources/faturas")
@@ -44,7 +44,7 @@ def carregar_arquivos():
         convert_pdf()
 
     # Carrega a planilha de gastos e as tabelas do YAML
-    planilha_gastos = load_workbook("../resources/Planilha de Gastos 2024.xlsx")
+    planilha_gastos = load_workbook("../resources/Planilha de Gastos 2025.xlsx")
     with open('../resources/tabelas.yml', 'r', encoding='utf-8') as file:
         tabelas = yaml.safe_load(file)
 
